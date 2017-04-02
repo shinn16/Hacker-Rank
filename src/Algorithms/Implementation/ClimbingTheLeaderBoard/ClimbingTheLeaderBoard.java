@@ -1,12 +1,7 @@
 package Algorithms.Implementation.ClimbingTheLeaderBoard;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 import java.io.File;
-import java.io.IOException;
-import java.util.LinkedHashSet;
-import java.util.PriorityQueue;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * ClimbingTheLeaderBoard class
@@ -16,22 +11,22 @@ import java.util.Scanner;
  */
 public class ClimbingTheLeaderBoard {
     public static void main(String[] args) {
-        LinkedHashSet<Integer> orderedScores = new LinkedHashSet<>();
-        PriorityQueue<Integer> sort = new PriorityQueue<>();
+        ArrayList<Integer> orderedScores = new ArrayList<>();
         boolean scored = false;
+        HashSet<Integer> sort = new HashSet<>();
         try{
-            Scanner in = new Scanner(new File("src/Algorithms/Implementation/ClimbingTheLeaderBoard/input.txt"));
+            Scanner in = new Scanner(System.in);
 
             // put each scores in a heap to sort it.
             int n = in.nextInt();
             for(int scores_i=0; scores_i < n; scores_i++){
-                sort.add(-1 * in.nextInt()); // convert to max heap
+                int value = in.nextInt();
+                if (sort.add(value)){ // remove any duplicates before inserting
+                    orderedScores.add(-1 * value);
+                }
             }
-            // remove duplicates
-            while (!sort.isEmpty()){
-                orderedScores.add(-1 * sort.remove()); // make the number positive again.
-            }
-
+            // sort
+            Collections.sort(orderedScores);
             // building alice's scores
             int m = in.nextInt();
             int[] alice = new int[m];
@@ -43,7 +38,7 @@ public class ClimbingTheLeaderBoard {
             int rank = 1; // descending counter
             for (int score : alice){ // for all of her scores
                 for (int otherScore: orderedScores){ // compare them to all the other score
-                    if (score >= otherScore){ // if she has one that is equal, give her the rank
+                    if (score >= -1 * otherScore){ // if she has one that is equal, give her the rank
                         System.out.println(rank);
                         scored = true; // let the next loop know she received a score.
                         break;
@@ -54,7 +49,7 @@ public class ClimbingTheLeaderBoard {
                 scored = false; // reset scored
                 rank = 1; // reset counter
             }
-        }catch (IOException e){
+        }catch (Exception e){
             e.printStackTrace();
         }
 
