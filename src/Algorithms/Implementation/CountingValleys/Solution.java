@@ -1,7 +1,5 @@
 package Algorithms.Implementation.CountingValleys;
 
-import java.io.File;
-import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -12,30 +10,30 @@ import java.util.Scanner;
  */
 public class Solution {
     public static void main(String[] args) {
-        int length;
+        Scanner input = new Scanner(System.in);
+        int n = input.nextInt(); input.nextLine();
+        String terrain = input.nextLine();
+        int level = 0; //Start at sea level
         int valleys = 0;
-        int elevation = 0;
-        boolean inValley = false;
-        try{
-            Scanner scanner = new Scanner(new File("/home/neo/Github/personal/Hacker-Rank/src/Algorithms/Implementation/CountingValleys/input.txt"));
-            length = Integer.parseInt(scanner.nextLine()); // useless
-            String[] path = scanner.nextLine().split("");
-            System.out.println(Arrays.toString(path));
-            for (String step : path){
-                if (step.equals("U")) elevation ++;
-                else elevation --;
+        boolean belowSea = false;
 
-                // check for valley
-                if (elevation == 0) inValley = false;
-                if (!inValley && elevation < 0){
-                    inValley = true;
-                    valleys ++;
-                }
+        for(int i = 0; i < n; i++)
+        {
+            char slope = terrain.charAt(i);
+            if(slope == 'U') level++;
+            else level--;
+
+            //Handle transitions
+            if(!belowSea && level < 0){
+                valleys++;
+                belowSea = true;
             }
-            System.out.println(valleys);
-        }catch (Exception e){
-            e.printStackTrace();
+
+            if(level >= 0)//We are back above sea level
+                belowSea = false;
         }
+        System.out.println(valleys);
     }
 }
+
 
