@@ -1,4 +1,4 @@
-package Algorithms.Implementation.Warmups.CompareTheTriplets;
+package Algorithms.Warmups.CompareTheTriplets;
 
 import java.util.Scanner;
 

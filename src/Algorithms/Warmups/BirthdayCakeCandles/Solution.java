@@ -1,4 +1,4 @@
-package Algorithms.Implementation.Warmups.BirthdayCakeCandles;
+package Algorithms.Warmups.BirthdayCakeCandles;
 
 import java.util.Scanner;
 

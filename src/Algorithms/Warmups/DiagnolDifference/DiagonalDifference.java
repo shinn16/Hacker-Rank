@@ -1,4 +1,4 @@
-package Algorithms.Implementation.Warmups.DiagnolDifference;
+package Algorithms.Warmups.DiagnolDifference;
 
 import java.util.Scanner;
 

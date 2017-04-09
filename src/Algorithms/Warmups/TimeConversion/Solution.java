@@ -1,4 +1,4 @@
-package Algorithms.Implementation.Warmups.TimeConversion;
+package Algorithms.Warmups.TimeConversion;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

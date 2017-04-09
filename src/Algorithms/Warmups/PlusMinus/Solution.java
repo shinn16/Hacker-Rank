@@ -1,4 +1,4 @@
-package Algorithms.Implementation.Warmups.PlusMinus;
+package Algorithms.Warmups.PlusMinus;
 
 import java.util.Scanner;
 

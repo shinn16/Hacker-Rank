@@ -1,4 +1,4 @@
-package Algorithms.Implementation.Warmups.MiniMaxSum;
+package Algorithms.Warmups.MiniMaxSum;
 
 import java.util.PriorityQueue;
 import java.util.Scanner;
